@@ -46,6 +46,9 @@ public class TryUnblock : MonoBehaviour
     private bool IsColliding() {
         ContactFilter2D cf = new ContactFilter2D();
         cf.useTriggers = false;
+        // Below lines will make sure to check only for layers that would normally collide with this object
+        cf.useLayerMask = true;
+        cf.layerMask = Physics2D.GetLayerCollisionMask(ownCollider.gameObject.layer);
 
         // Additional filter option can be specified on cf object
         // ...
